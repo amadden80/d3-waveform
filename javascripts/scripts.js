@@ -1,20 +1,19 @@
 
 
-
-function newData(srate, freq, duration){
-
-  d3.select("#container").selectAll(".bars").remove();
+function sinWave(time_offset, frequency, srate, duration, amplitude, dc_offset){
 
   var data = new Array(srate * duration);
+  var omega = frequency * 2 * Math.PI;
+console.log(amplitude)
   for(var i=0; i<data.length; i++){
-    data[i] = 200*(Math.sin(freq * 2 * Math.PI * i/srate) + 2);
+    data[i] = amplitude * (Math.sin(omega * (time_offset+(i/srate)))) + dc_offset;
   }
   return data;
 
 }
 
 
-function updateData(data){
+function projectData(data){
 
   var d3_body = d3.select("#container");
 
@@ -39,19 +38,26 @@ function updateData(data){
 
 
 
+
+
+
+var srate = 100;
+var duration = 1;
+var frequency = 2;
+var amplitude = 200;
+var dc_offset = 400;
+var time_offset = 0;
 var data;
-$(function(){
 
-  var srate = 50;
-  var duration = 1;
-  var freq = 2;
 
-  data = newData(srate, freq, duration);
+setInterval(function(){
+  
+  data = sinWave(time_offset, frequency, srate, duration, amplitude, dc_offset)
 
-  setInterval(function(){
-    data.unshift(data.pop())
-    updateData(data);
-  }, 100);
+  projectData(data);
 
-})
+  time_offset+=(1/srate)
+
+}, 100);
+
 

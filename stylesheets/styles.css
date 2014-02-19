@@ -14,11 +14,10 @@ body{
 }
 
 #container{
-	top:-40px;
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top:-10%;
+	top:-15%;
 }
 
 #frequency-field{
