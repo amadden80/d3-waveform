@@ -4,7 +4,7 @@ function sinWave(time_offset, frequency, srate, duration, amplitude, dc_offset){
 
   var data = new Array(srate * duration);
   var omega = frequency * 2 * Math.PI;
-console.log(amplitude)
+
   for(var i=0; i<data.length; i++){
     data[i] = amplitude * (Math.sin(omega * (time_offset+(i/srate)))) + dc_offset;
   }
