@@ -1,5 +1,7 @@
 
 
+
+
 function sinWave(time_offset, frequency, srate, duration, amplitude, dc_offset){
 
   var data = new Array(srate * duration);
@@ -39,8 +41,6 @@ function projectData(data){
 
 
 
-
-
 var srate = 100;
 var duration = 1;
 var frequency = 2;
@@ -48,6 +48,10 @@ var amplitude = 200;
 var dc_offset = 400;
 var time_offset = 0;
 var data;
+
+function newFreq(freq){
+  frequency = freq;
+}
 
 
 setInterval(function(){
